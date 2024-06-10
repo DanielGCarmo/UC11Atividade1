@@ -13,7 +13,8 @@ public class ProdutosDAO {
     ResultSet resultset;
     ArrayList<ProdutosDTO> listagem = new ArrayList<>();
 
-    public void cadastrarProduto(ProdutosDTO produto, String sql) {
+    public void cadastrarProduto(ProdutosDTO produto) {
+         String sql = "INSERT INTO produtos (nome, valor, status) VALUES (?, ?, ?)";
 
         conn = new conectaDAO().connectDB();
         try {
