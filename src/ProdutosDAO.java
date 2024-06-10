@@ -90,4 +90,37 @@ public class ProdutosDAO {
             }
         }
     }
+
+    //Adiciona um método para listar todos os produtos com o status "Vendido".
+    public ArrayList<ProdutosDTO> listarProdutosVendidos() {
+        String sql = "SELECT * FROM produtos WHERE status = 'Vendido'";
+        conn = new conectaDAO().connectDB();
+        ArrayList<ProdutosDTO> listagemVendidos = new ArrayList<>();
+
+        try {
+            prep = conn.prepareStatement(sql);
+            resultset = prep.executeQuery();
+
+            while (resultset.next()) {
+                ProdutosDTO produto = new ProdutosDTO();
+                produto.setId(resultset.getInt("id"));
+                produto.setNome(resultset.getString("nome"));
+                produto.setValor(resultset.getInt("valor"));
+                produto.setStatus(resultset.getString("status"));
+                listagemVendidos.add(produto);
+            }
+
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "ProdutosDAO Listar Vendidos: " + erro.getMessage());
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Erro ao fechar conexão: " + e.getMessage());
+            }
+        }
+
+        return listagemVendidos;
+    }
+
 }
