@@ -129,13 +129,14 @@ public class listagemVIEW extends javax.swing.JFrame {
 
         ProdutosDAO produtosdao = new ProdutosDAO();
 
-        // Implementar a funcionalidade de vender produto
+        //Implementar a funcionalidade de vender produto
         produtosdao.venderProduto(Integer.parseInt(id));
         listarProdutos();
     }//GEN-LAST:event_btnVenderActionPerformed
 
     private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
-        vendasVIEW vendas = new vendasVIEW(); // Implementar a funcionalidade de consultar vendas 
+        // Implementar a funcionalidade de consultar vendas
+        vendasVIEW vendas = new vendasVIEW(); 
         vendas.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVendasActionPerformed
